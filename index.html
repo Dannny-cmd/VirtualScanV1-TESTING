@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Virtuals Scan</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <img src="https://i.postimg.cc/zBT95V8x/Vscan-logo-removebg-preview.png" alt="Vscan Logo" class="logo">
+          <div class="filters">
+            <div class="search-container">
+              <input type="text" id="search-input" placeholder="Search..." class="search-input">
+              <button id="clear-search" class="clear-button" style="display: none;">&times;</button>
+            </div>
+            <select id="chain-filter" class="chain-filter">
+              <option value="">All Chains</option>
+            </select>
+          </div>
+        </div>
+        <h1>Virtuals Scan</h1>
+        
+        <!-- Sorting Options -->
+        <div class="sorting-options">
+          <div class="sort-group">
+            <label>
+              <input type="radio" name="sort" value="newest" checked> Newest
+            </label>
+            <label>
+              <input type="radio" name="sort" value="marketCap"> Market Cap
+            </label>
+            <label>
+              <input type="radio" name="sort" value="lockedPercentage"> Locked%
+            </label>
+            <label>
+              <input type="radio" name="sort" value="topHoldersPercentage"> Top 10 Holder% <!-- New Top 10 Holder% filter -->
+            </label>
+          </div>
+          <span class="pipe-symbol">|</span> <!-- Pipe symbol with custom padding -->
+          <div class="type-group">
+            <label>
+              <input type="radio" name="type" value="prototype" checked> Prototype
+            </label>
+            <label>
+              <input type="radio" name="type" value="sentient"> Sentient
+            </label>
+          </div>
+          <!-- Refresh Button -->
+          <img src="https://i.postimg.cc/253XTw6R/refresh.webp" alt="Refresh" class="refresh-button" onclick="fetchData()">
+        </div>
+
+        <div id="data-container" class="data-container"></div>
+      </div>
+
+      <!-- Stylish Loading Screen -->
+      <div id="loading-screen" class="loading-screen" style="display: none;">
+        <div class="loading-content">
+          <div class="spinner"></div>
+          Loading...
+        </div>
+      </div>
+
+      <!-- Modal for Top Holders -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Top 10 Holders</h2>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+
+      <script src="script.js"></script>
+    </body>
+    </html>

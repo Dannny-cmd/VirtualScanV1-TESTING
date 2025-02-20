@@ -1,0 +1,374 @@
+/* General styles */
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #3c3c3c;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 290px;
+  right: 20px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 175px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #4c4c4c;
+  color: #ffffff;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.2em;
+  display: none; /* Initially hidden */
+}
+
+.clear-button:hover {
+  color: #ff0000; /* Change color on hover */
+}
+
+h1 {
+  text-align: left;
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.sorting-options {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sort-group,
+.type-group {
+  display: flex;
+  align-items: center;
+  padding: 0 5px; /* Reduced padding for groups */
+}
+
+.pipe-symbol {
+  padding: 0 5px; /* Reduced padding for pipe symbol */
+  margin: 0 3px; /* Reduced margin for spacing */
+}
+
+.chain-filter {
+  width: 175px;
+  padding: 7px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #4c4c4c;
+  color: #ffffff;
+  margin-left: 1px; /* Add margin for spacing */
+}
+
+.data-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #4c4c4c;
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.item:hover {
+  transform: scale(1.01);
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item img {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.item h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.symbol {
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item p {
+  margin: 5px 0;
+  color: #ffffff;
+  font-size: 0.9em;
+}
+
+.locked-percentage {
+  font-size: 0.8em; /* Slightly smaller font size */
+  font-weight: normal; /* Not bold */
+}
+
+.copyable-text {
+  cursor: pointer;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.trade-link {
+  color: #1e90ff;
+  text-decoration: underline;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #3c3c3c;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Popup notification styles */
+.copy-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+/* Stylish Loading Screen Styles */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-content {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid #ffffff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  margin-right: 10px; /* Space between spinner and text */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Adjust font size for CA and Dev Wallet */
+.copyable-text strong {
+  font-size: 0.9em; /* Same size as holders, chain, etc. */
+}
+
+/* Refresh Button Styles */
+.refresh-button {
+  width: 30px; /* Increased width for better visibility */
+  height: 30px; /* Increased height for better visibility */
+  cursor: pointer; /* Change cursor to pointer */
+  margin-left: 10px; /* Add some space to the left */
+  margin-top: 5px;
+}
+
+/* Price Change Arrows */
+.price-change-up {
+  color: #3cb371; /* Green for price increase */
+}
+
+.price-change-down {
+  color: red; /* Red for price decrease */
+}
+
+/* Chain Image Adjustment */
+.item-header img[src*="base"], .item-header img[src*="sol"] {
+  vertical-align: middle; /* Ensure images align properly */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters {
+    position: static;
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: column; /* Stack filter elements vertically */
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .search-input {
+    width: calc(100% - 50px); /* Full width minus button */
+  }
+
+  .chain-filter {
+    width: 100%;
+    margin-top: 10px; /* Add margin for spacing */
+  }
+
+  .sorting-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sort-group,
+  .type-group {
+    flex-direction: column; /* Stack labels under buttons */
+    align-items: flex-start; /* Align items to the left */
+    margin-bottom: 10px; /* Add space between groups */
+  }
+
+  .sort-group label,
+  .type-group label {
+    font-size: 0.9em; /* Uniform font size */
+    font-weight: normal; /* Uniform font weight */
+    margin: 5px 0; /* Uniform margin */
+    line-height: 1.5; /* Uniform line height for better spacing */
+  }
+
+  .data-container {
+    grid-template-columns: 1fr; /* Stack items vertically */
+  }
+
+  .item {
+    padding: 10px; /* Reduce padding for mobile */
+  }
+
+  .item-header {
+    flex-direction: column; /* Stack logo and title */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .item img {
+    width: 50px; /* Adjust icon size for mobile */
+    height: 50px; /* Adjust icon size for mobile */
+  }
+
+  .item h2 {
+    font-size: 1.1em; /* Adjust font size for mobile */
+  }
+
+  .item-details p {
+    font-size: 0.8em; /* Adjust font size for mobile */
+  }
+}
