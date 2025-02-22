@@ -110,6 +110,33 @@ async function fetchData(searchTerm = '') {
         lockedPercentage: holdersData[index].lockedPercentage, // Add locked percentage
         topHoldersPercentage: holdersData[index].topHoldersPercentage // Add top 10 holders percentage
       }));
+
+      // Fetch additional data for apiUrlPrototype
+      if (url === apiUrlPrototype) {
+        await Promise.all(allItems.map(async (item) => {
+          const chainID = item.chain === 'SOLANA' ? 1 : 0; // Determine chainID
+          const preToken = item.preToken; // Get preToken
+          
+// Fetch data for 1 hour
+const oneHourResponse = await fetch(`https://vp-api.virtuals.io/vp-api/tickers?tokenAddress=${preToken}&granularity=3600&chainID=${chainID}`);
+const oneHourData = await oneHourResponse.json();
+item.volume.h1 = oneHourData.data.Ticker.volume; // Set volume for 1 hour
+item.priceChange.h1 = isNaN(parseFloat(oneHourData.data.Ticker.priceChangePercent)) ? '0.00' : parseFloat(oneHourData.data.Ticker.priceChangePercent).toFixed(2); // Set price change for 1 hour with 2 decimal places
+
+// Fetch data for 6 hours
+const sixHourResponse = await fetch(`https://vp-api.virtuals.io/vp-api/tickers?tokenAddress=${preToken}&granularity=21600&chainID=${chainID}`);
+const sixHourData = await sixHourResponse.json();
+item.volume.h6 = sixHourData.data.Ticker.volume; // Set volume for 6 hours
+item.priceChange.h6 = isNaN(parseFloat(sixHourData.data.Ticker.priceChangePercent)) ? '0.00' : parseFloat(sixHourData.data.Ticker.priceChangePercent).toFixed(2); // Set price change for 6 hours with 2 decimal places
+
+// Fetch data for 24 hours
+const twentyFourHourResponse = await fetch(`https://vp-api.virtuals.io/vp-api/tickers?tokenAddress=${preToken}&granularity=86400&chainID=${chainID}`);
+const twentyFourHourData = await twentyFourHourResponse.json();
+item.volume.h24 = twentyFourHourData.data.Ticker.volume; // Set volume for 24 hours
+item.priceChange.h24 = isNaN(parseFloat(twentyFourHourData.data.Ticker.priceChangePercent)) ? '0.00' : parseFloat(twentyFourHourData.data.Ticker.priceChangePercent).toFixed(2); // Set price change for 24 hours with 2 decimal places
+
+        }));
+      }
     }
 
     displayData(allItems);
